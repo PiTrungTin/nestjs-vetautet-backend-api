@@ -5,10 +5,11 @@ import { TicketModule } from './ticket/ticket.module';
 import { OrderModule } from './order/order.module';
 import { UserModule } from './user/user.module';
 import { DbModule } from './db/db.module';
+import { MyloggerDev } from './logger/my.logger.dev';
 
 @Module({
   imports: [TicketModule, OrderModule, UserModule, DbModule],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, MyloggerDev],
 })
 export class AppModule {}
