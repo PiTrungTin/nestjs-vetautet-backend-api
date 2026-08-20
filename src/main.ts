@@ -8,16 +8,12 @@ import { MyLogger } from './logger/my.logger';
 import { MyloggerDev } from './logger/my.logger.dev';
 
 async function bootstrap() {
-  const app = await NestFactory.create<NestExpressApplication>(AppModule, {
-    // logger: new MyLogger()
-    // bufferLogs: true
-  });
-  app.useLogger(new MyLogger());
+  const app = await NestFactory.create<NestExpressApplication>(AppModule);
+ 
   app.useGlobalPipes(new ValidationPipe());
 
   //anable cors
   app.enableCors();
-  app.useGlobalGuards(new LoginGuard());
   app.useStaticAssets(join(__dirname, '../uploads'), {
     prefix: '/uploads/',
   });
